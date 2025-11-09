@@ -1,0 +1,1 @@
+* 本章节整理了“激活函数”（Activation）与“归一化”（Normalization）层的创新。这包括对标准ReLU的改进（如Mish, SiLU, GELU）以及对BatchNorm的替代或改进方案（如LayerNorm, GroupNorm）。
