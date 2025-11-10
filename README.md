@@ -40,26 +40,25 @@
 * **ABC-Attention**
     * **简要说明:** 提出了一种用于红外小目标检测的注意力机制。它基于Transformer架构，通过新颖的双线性相关（Bilinear Correlation）注意力来有效增强微小目标特征并抑制背景噪声。
     * **链接:** [[Paper]](https://arxiv.org/abs/2303.10321) [[Code]](https://github.com/PANPEIWEN/ABC) (CVPR 2024)
-
 * **Agent-Attention**
     * **简要说明:** 提出了一种新颖的“代理注意力”范式。它引入一小组“代理令牌”（Agent Tokens）来负责聚合和广播全局信息，旨在平衡Transformer中Softmax注意力的强大表达能力和线性注意力的计算效率。
     * **链接:** [[Paper]](https://arxiv.org/abs/2312.08874) [[Code]](https://github.com/LeapLabTHU/Agent-Attention) (ECCV 2024)
-
 * **Attention-GhostUNet++**
     * **简要说明:** 一种用于医学图像分割的深度学习模型。它专注于精确分割CT图像中的腹部脂肪组织（皮下和内脏）以及肝脏。
     * **链接:** [[Paper]](https://arxiv.org/abs/2504.11491) [[Code]](https://github.com/MansoorHayat777/Attention-GhostUNetPlusPlus) (Sensors 2024)
-
 * **DarkIR**
     * **简要说明:** 一种用于低光图像恢复的多任务模型，能同时处理噪声、低光和模糊。它没有使用Transformer，而是通过新颖的加法注意力机制（Additive Attention）来增强CNN的性能，以更低的计算成本实现了SOTA效果。
     * **链接:** [[Paper]](https://arxiv.org/abs/2412.13443) [[Code]](https://github.com/cidautai/DarkIR) (CVPR 2025)
-
 * **PFT-SR**
     * **简要说明:** 提出了一种用于单图像超分辨率的“渐进式聚焦Transformer”（Progressive Focused Transformer）。它使用渐进式聚焦注意力（PFA）来链接网络中的注意力图，使模型能专注于最重要的特征，并通过过滤无关特征来降低计算成本。
     * **链接:** [[Paper]](https://arxiv.org/abs/2503.20337) [[Code]](https://github.com/LabShuHangGU/PFT-SR) (CVPR 2025)
-
 * **SvANet**
     * **简要说明:** 一种用于微小医疗对象分割的“尺度变化注意力网络”。它引入了蒙特卡洛注意力（MCAttn）和尺度变化注意力（SvAttn）来处理不同尺度的小目标，能跨多种医疗图像模态（如CT, MRI等）工作。
     * **链接:** [[Paper]](https://arxiv.org/abs/2407.07720) [[Code]](https://github.com/anthonyweidai/SvANet) (WACV 2025)
+* **SCSA**
+    * **简要说明:** 一种即插即用的“空间与通道协同注意力”（SCSA）模块 。它旨在探索空间和通道注意力之间被忽视的“协同效应” 。它引入了 `SMSA`（共享多语义空间注意力），利用多尺度 1D 卷积来提取不同的空间语义信息，并以此“指导” `PCSA`（渐进式通道自注意力） 。PCSA 进而使用通道自注意力来“缓解”不同语义特征间的“差异” ，从而在分类、检测和分割等多种视觉任务上实现更好的特征融合。
+    * **链接:** [[Paper]](https://arxiv.org/abs/2407.05128) [[Code]](https://github.com/HZAI-ZJNU/SCSA) (SCI一区 2025)
+    
 
 ---
 
