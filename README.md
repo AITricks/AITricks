@@ -58,6 +58,9 @@
 * **SCSA**
     * **简要说明:** 一种即插即用的“空间与通道协同注意力”（SCSA）模块 。它旨在探索空间和通道注意力之间被忽视的“协同效应” 。它引入了 `SMSA`（共享多语义空间注意力），利用多尺度 1D 卷积来提取不同的空间语义信息，并以此“指导” `PCSA`（渐进式通道自注意力） 。PCSA 进而使用通道自注意力来“缓解”不同语义特征间的“差异” ，从而在分类、检测和分割等多种视觉任务上实现更好的特征融合。
     * **链接:** [[Paper]](https://arxiv.org/abs/2407.05128) [[Code]](https://github.com/HZAI-ZJNU/SCSA) (SCI一区 2025)
+* **AMDNet**
+    * **简要说明：** 一种用于时间序列预测（TSF）的 **AMD（自适应多尺度分解）**框架。该方法基于 MLP，旨在解决 Transformer 的“过拟合”和 MLP 的“信息瓶颈”问题。其核心是**“分解-交互-合成”**：它首先通过 `MDM` 模块将时间序列**分解**为多个尺度；然后通过 `DDI` 模块高效建模其时序和通道依赖；最后，它创新地使用了一个**混合专家（MoE）**架构——即 `AMS` 模块——来对这些不同尺度的预测进行**自适应加权**，从而实现高效且鲁棒的预测。
+    * **链接:** [[Paper]](https://arxiv.org/pdf/2406.03751) [[Code]](https://github.com/TROUBADOUR000/AMD) (AAAI 2025)
     
 
 ---
@@ -73,6 +76,11 @@
 * **LDConv**
     * **简要说明:** 提出“线性可变形卷积”（Linear Deformable Convolution）。与参数量随核大小呈平方增长的标准卷积不同，LDConv的参数量呈线性增长。它使用不规则和可变形的采样形状来动态适应目标，可作为标准卷积的轻量级替代。
     * **链接:** [[Paper]](https://arxiv.org/abs/2311.11587) [[Code]](https://github.com/CV-ZhangXin/LDConv) (Image Vis. Comput 2023)
+
+**ARConv**
+
+* **简要说明：** 一种用于遥感图像全色锐化的新型卷积模块，名为 **ARConv（自适应矩形卷积）**。它旨在打破传统卷积核“固定方形”和“固定采样点数”的束缚。ARConv 能够**自适应地学习**卷积核所需的高度（$h$）和宽度（$w$），并根据学习到的尺度**动态调整采样点的数量**（$k_h, k_w$）。这种设计使其能够灵活地从像素级别捕捉遥感图像中尺度和形状各异的地物特征。
+* **链接:** [[Paper]](https://arxiv.org/abs/2503.00467) [[Code]](https://github.com/WangXueyang-uestc/ARConv) (CVPR 2025)
 
 ---
 
@@ -102,6 +110,10 @@
 * **DAT-Transformer**
     * **简要说明:** 提出“可变形注意力Transformer”（Deformable-Attention-based Transformer）。其核心是可变形的自注意力模块，其中“键”和“值”对的位置是根据数据动态学习的，这使得模型能够自适应地聚焦于相关的图像区域，捕获更多信息特征。
     * **链接:** [[Paper]](https://arxiv.org/abs/2308.03364) [[Code]](https://github.com/zhengchen1999/DAT) (ICCV 2023)
+
+* **TBSN**
+    * **简要说明:**这篇论文提出了一种名为 **TBSN** 的新型自监督去噪网络 。它通过巧妙地**重新设计 Transformer 的注意力机制**（G-CSA 和 M-WSA），使其能够**在满足“盲点”约束**（BSN）的前提下工作 。这样，模型既能利用 Transformer 强大的全局感知能力，又不会“偷看”到原始噪声，从而在自监督去噪任务上达到了 SOTA 性能。
+    * **链接:** [[Paper]](https://arxiv.org/abs/2404.07846) [[Code]](https://github.com/nagejacob/TBSN) (AAAI 2025)
 
 ---
 

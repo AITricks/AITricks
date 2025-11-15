@@ -11,9 +11,9 @@
 ### 2. 背景与动机
 
 * **[文本角度总结]**
-    
+  
 * “预训练-微调”范式在 CV 领域取得了巨大成功。其中，**全量微调（Full Fine-tuning）**（即更新所有骨干网络参数）一直是实现最佳性能（SOTA）的黄金标准。
-    
+  
     然而，随着模型越来越大，全量微调的存储和计算成本变得难以承受。因此，**Delta-tuning**（或 PEFT）方法应运而生。这类方法（如 LoRA、Adapter）只训练一小部分（<5%）的额外参数，在 NLP 和简单的 CV 分类任务上取得了接近全量微调的性能。
     
     **本文的核心动机（即“问题”）**：在**复杂、密集**的视觉识别任务（如 COCO 实例分割、ADE20K 语义分割）上，现有的 Delta-tuning 方法（如 LoRA, AdaptFormer）**始终无法超越**全量微调的性能上限。
@@ -57,7 +57,7 @@
 
 * **核心创新模块详解（Figure 2 右侧）：**
 
-    <img src="https://gitee.com/ChadHui/typora-image/raw/master/cv-image/20251111201318.jpg" alt="结构图" style="zoom:80%;" />
+    ![结构图](https://gitee.com/ChadHui/typora-image/raw/master/cv-image/20251111211415.jpg)
 
     * **对于 模块 A：Mona Layer**
         * **理念：** 这是本文的核心创新。它是一个专为视觉信号设计的高效适配器（Adapter）。
