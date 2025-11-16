@@ -77,10 +77,15 @@
     * **简要说明:** 提出“线性可变形卷积”（Linear Deformable Convolution）。与参数量随核大小呈平方增长的标准卷积不同，LDConv的参数量呈线性增长。它使用不规则和可变形的采样形状来动态适应目标，可作为标准卷积的轻量级替代。
     * **链接:** [[Paper]](https://arxiv.org/abs/2311.11587) [[Code]](https://github.com/CV-ZhangXin/LDConv) (Image Vis. Comput 2023)
 
-**ARConv**
+* **ARConv**
 
-* **简要说明：** 一种用于遥感图像全色锐化的新型卷积模块，名为 **ARConv（自适应矩形卷积）**。它旨在打破传统卷积核“固定方形”和“固定采样点数”的束缚。ARConv 能够**自适应地学习**卷积核所需的高度（$h$）和宽度（$w$），并根据学习到的尺度**动态调整采样点的数量**（$k_h, k_w$）。这种设计使其能够灵活地从像素级别捕捉遥感图像中尺度和形状各异的地物特征。
-* **链接:** [[Paper]](https://arxiv.org/abs/2503.00467) [[Code]](https://github.com/WangXueyang-uestc/ARConv) (CVPR 2025)
+    * **简要说明：** 一种用于遥感图像全色锐化的新型卷积模块，名为 **ARConv（自适应矩形卷积）**。它旨在打破传统卷积核“固定方形”和“固定采样点数”的束缚。ARConv 能够**自适应地学习**卷积核所需的高度（$h$）和宽度（$w$），并根据学习到的尺度**动态调整采样点的数量   （$k_h, k_w$）。这种设计使其能够灵活地从像素级别捕捉遥感图像中尺度和形状各异的地物特征。
+    * **链接:** [[Paper]](https://arxiv.org/abs/2503.00467) [[Code]](https://github.com/WangXueyang-uestc/ARConv) (CVPR 2025)
+
+* **SCConv**
+
+    * **简要说明：** SCConv（空间和通道重建卷积）是一种高效的、即插即用的卷积模块，旨在替代标准卷积层 。该模块包含两个核心单元：SRU（空间重建单元）用于抑制特征的空间冗余 ，CRU（通道重建单元）用于削减通道间的信息冗余。通过这种双重冗余消除，SCConv 能够在显著降低模型计算成本和参数量的同时，帮助网络学习到更具代表性的特征，从而提升模型性能 。
+    * **链接:** [[Paper]](https://openaccess.thecvf.com/content/CVPR2023/papers/Li_SCConv_Spatial_and_Channel_Reconstruction_Convolution_for_Feature_Redundancy_CVPR_2023_paper.pdf) (CVPR 2023)
 
 ---
 
@@ -115,6 +120,13 @@
     * **简要说明:**这篇论文提出了一种名为 **TBSN** 的新型自监督去噪网络 。它通过巧妙地**重新设计 Transformer 的注意力机制**（G-CSA 和 M-WSA），使其能够**在满足“盲点”约束**（BSN）的前提下工作 。这样，模型既能利用 Transformer 强大的全局感知能力，又不会“偷看”到原始噪声，从而在自监督去噪任务上达到了 SOTA 性能。
     * **链接:** [[Paper]](https://arxiv.org/abs/2404.07846) [[Code]](https://github.com/nagejacob/TBSN) (AAAI 2025)
 
+* **SST**
+    * **简要说明:**SST (State Space Transformer) 是一种用于时间序列预测的新型混合架构，旨在解决简单堆叠 Mamba 和 Transformer 所导致的“信息干扰”问题。其核心思想是利用多尺度专家（MoE）系统：使用 Mamba 专家在低分辨率（粗粒度）数据上捕捉长程模式，同时使用 Transformer 专家在 high-resolution（细粒度）数据上捕捉短程变异。通过这种方式，SST 在保持线性计算复杂度的同时，实现了最先进的（SOTA）预测性能。
+    * **链接:** [[Paper]](https://arxiv.org/abs/2404.14757 ) [[Code]](https://github.com/XiongxiaoXu/SST) (CIKM 2025)
+
+https://arxiv.org/abs/2404.14757 
+https://github.com/XiongxiaoXu/SST
+
 ---
 
 ### <a id="05_Feature_Fusion_Neck"></a>📂 05_Feature_Fusion_Neck (特征融合/Neck系列)
@@ -137,7 +149,7 @@
 ### <a id="07_Activation_Normalization"></a>📂 07_Activation_Normalization (激活函数与归一化系列)
 
 本章节汇总了对ReLU、BatchNorm等模块的改进。
-* MONA
+* **MONA**
   * **简要说明:** 一种名为 SCSA (空间与通道协同注意力) 的即插即用注意力模块。它旨在探索空间和通道注意力之间被忽视的“协同效应” ，即现有方法未能解决的“多语义差异”问题。它引入了 `SMSA`（共享多语义空间注意力） ，利用多尺度 1D 卷积来提取不同的空间语义信息 ，并以此作为空间先验来“指导” `PCSA`（渐进式通道自注意力） 。PCSA 进而使用通道自注意力来“缓解”不同语义特征间的“差异” ，从而在分类、检测和分割等多种视觉任务上实现更优的特征融合 。。
   * **链接:** [[Paper]](https://arxiv.org/abs/2408.08345) [[Code]](https://github.com/LeiyiHU/mona) (CVPR 2025)
 
