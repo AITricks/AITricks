@@ -61,6 +61,20 @@
 * **AMDNet**
     * **简要说明：** 一种用于时间序列预测（TSF）的 **AMD（自适应多尺度分解）**框架。该方法基于 MLP，旨在解决 Transformer 的“过拟合”和 MLP 的“信息瓶颈”问题。其核心是**“分解-交互-合成”**：它首先通过 `MDM` 模块将时间序列**分解**为多个尺度；然后通过 `DDI` 模块高效建模其时序和通道依赖；最后，它创新地使用了一个**混合专家（MoE）**架构——即 `AMS` 模块——来对这些不同尺度的预测进行**自适应加权**，从而实现高效且鲁棒的预测。
     * **链接:** [[Paper]](https://arxiv.org/pdf/2406.03751) [[Code]](https://github.com/TROUBADOUR000/AMD) (AAAI 2025)
+
+* **EfficientViM**
+    * **简要说明：** Efficient ViM 针对标准 Mamba 模型在视觉任务中线性投影计算成本过高的问题，提出了一种 基于隐状态混合器的状态空间对偶 (HSM-SSD) 模块。该模块巧妙地将昂贵的通道混合与门控操作转移到压缩后的隐状态空间进行，大幅降低了计算复杂度，同时保留了全局建模能力。配合单头设计消除内存瓶颈，以及 多阶段隐状态融合 (MSF) 策略增强特征表征，Efficient ViM 在 ImageNet 上实现了超越 MobileNetV3 和 SHVIT 的速度-精度权衡，是构建高效轻量级视觉主干网络的理想选择。
+    * **链接:** [[Paper]](https://arxiv.org/pdf/2411.15241) [[Code]](https://github.com/mlvlab/EfficientViM) (AAAI 2025)
+
+* **MobileMamba**
+    * **简要说明：** MobileMamba 提出了一种高效的轻量级视觉网络，旨在解决 CNN 感受野受限和 ViT 计算复杂度高的问题。其核心即插即用模块 MRFFI (多感受野特征交互) 创新性地结合了 WTE-Mamba 和 MK-DeConv。WTE-Mamba 利用小波变换增强 Mamba 对高频细节的捕捉能力并进行全局建模；MK-DeConv 通过多核深度卷积并行提取多尺度局部特征。这种“分而治之”的策略在保持线性计算复杂度的同时，实现了全局与局部信息的有效融合，显著提升了轻量级模型在图像分类及下游任务中的性能与推理速度。
+    * **链接:** [[Paper]](https://arxiv.org/abs/2411.15941) [[Code]](https://github.com/lewandofskee/MobileMamba) (CVPR 2025)
+
+* **HVI-CIDNet**
+    * **简要说明：** HVI-CIDNet 针对低光照图像增强中颜色失真和噪声放大的问题，提出了一种创新的解决方案。它首先通过 HVI 颜色空间变换，在输入端解耦亮度和色度，并利用极坐标化和强度塌缩机制从物理/数学层面消除红黑噪声伪影。随后，CIDNet 利用双分支架构和 LCA (轻量级交叉注意力) 模块，分别处理并交互融合亮度和色度特征。这种“空间变换+双流解耦”的策略，不仅大幅降低了计算成本，还在多个数据集上实现了 SOTA 的增强效果。
+    * **链接:** [[Paper]](https://arxiv.org/abs/2502.20272) [[Code]](https://github.com/Fediory/HVI-CIDNet) (CVPR 2025)
+
+
     
 
 ---
@@ -86,6 +100,13 @@
 
     * **简要说明：** SCConv（空间和通道重建卷积）是一种高效的、即插即用的卷积模块，旨在替代标准卷积层 。该模块包含两个核心单元：SRU（空间重建单元）用于抑制特征的空间冗余 ，CRU（通道重建单元）用于削减通道间的信息冗余。通过这种双重冗余消除，SCConv 能够在显著降低模型计算成本和参数量的同时，帮助网络学习到更具代表性的特征，从而提升模型性能 。
     * **链接:** [[Paper]](https://openaccess.thecvf.com/content/CVPR2023/papers/Li_SCConv_Spatial_and_Channel_Reconstruction_Convolution_for_Feature_Redundancy_CVPR_2023_paper.pdf) (CVPR 2023)
+
+* **TDCNet**
+
+    * **简要说明：** TDCNet 是一种针对移动红外小目标检测的新型网络，旨在解决传统 3D 卷积对运动感知不足的问题。它提出了两个核心即插即用模块：TDCR (时间差分卷积重参数化) 模块，通过重参数化技术将多尺度时间差分操作融合进 3D 卷积，实现了零推理成本的显式运动建模；TDCSTA (TDC引导的时空注意力) 模块，利用 TDCR 提取的强运动特征作为 Query，指导并增强时空特征的语义表达，有效抑制了复杂背景干扰。
+    * **链接:** [[Paper]](https://arxiv.org/abs/2511.09352) [[Code]](https://github.com/IVPLaboratory/TDCNet) (AAAI 2026)
+
+
 
 ---
 
@@ -124,15 +145,25 @@
     * **简要说明:**SST (State Space Transformer) 是一种用于时间序列预测的新型混合架构，旨在解决简单堆叠 Mamba 和 Transformer 所导致的“信息干扰”问题。其核心思想是利用多尺度专家（MoE）系统：使用 Mamba 专家在低分辨率（粗粒度）数据上捕捉长程模式，同时使用 Transformer 专家在 high-resolution（细粒度）数据上捕捉短程变异。通过这种方式，SST 在保持线性计算复杂度的同时，实现了最先进的（SOTA）预测性能。
     * **链接:** [[Paper]](https://arxiv.org/abs/2404.14757 ) [[Code]](https://github.com/XiongxiaoXu/SST) (CIKM 2025)
 
-https://arxiv.org/abs/2404.14757 
-https://github.com/XiongxiaoXu/SST
+
 
 ---
 
 ### <a id="05_Feature_Fusion_Neck"></a>📂 05_Feature_Fusion_Neck (特征融合/Neck系列)
 
 本章节汇总了FPN及其他用于融合多尺度特征的Neck结构创新。
-* *(待补充...)*
+
+* **ConDSeg**
+    * **简要说明:**ConDSeg 是一种针对医学图像分割中“软边界”模糊和“共现现象”误导挑战的通用框架 1111。该方法通过 **语义信息解耦（SID）** 将特征分离为前景、背景和不确定区域，并利用 **对比驱动特征聚合（CDFA）** 模块以对比的方式引导多级特征融合，从而在低对比度环境下实现精准的边界分割 2。配合 **尺寸感知解码器（SA-Decoder）** 对不同尺度目标的分治处理，ConDSeg 有效避免了特征混淆，在多个医学数据集上取得了 SOTA 性能 3。
+    * **链接:** [[Paper]](https://arxiv.org/abs/2412.08345 ) [[Code]](https://github.com/Mengqi-Lei/ConDSeg) (AAAI 2025)
+
+* **GLVMamba**
+    * **简要说明:**GLVMamba 是一种针对遥感图像分割挑战（如光照阴影、目标尺度差异大）提出的新型网络。它包含两个核心即插即用模块：GLVSS 块 通过引入局部前馈和移位窗口机制，弥补了 Mamba 在保留局部细节上的不足，实现了全局与局部特征的有效融合；SCPP 模块 通过自适应加权的多尺度池化，动态感知不同尺度的目标，有效解决了分割中的空洞和误检问题。这两个模块共同助力 GLVMamba 在遥感图像分割任务上取得了 SOTA 性能。
+    * **链接:** [[Paper]](https://arxiv.org/search/?query=GLVMamba%3A+A+Global%E2%80%93Local+Visual+State-Space+Model+for+Remote+Sensing+Image+Segmentation&searchtype=all&source=header](https://arxiv.org/search/?query=GLVMamba%3A+A+Global%E2%80%93Local+Visual+State-Space+Model+for+Remote+Sensing+Image+Segmentation&searchtype=all&source=header ) [[Code]](https://github.com/Tokisakiwlp/GLVMamba) (TGRS 2025)
+
+
+
+
 
 ---
 
