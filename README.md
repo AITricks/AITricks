@@ -86,6 +86,14 @@
     * **简要说明：**  该论文提出了一种名为 **SCSA (Spatial and Channel Synergistic Attention)** 的新型即插即用注意力模块，旨在解决现有混合注意力机制在利用多语义空间信息及处理语义差异方面的不足。SCSA 采用串行结构，首先通过 **SMSA (Shareable Multi-Semantic Spatial Attention)** 模块利用多尺度 1D 卷积提取不同语义的空间特征作为先验；随后通过 **PCSA (Progressive Channel-wise Self-Attention)** 模块利用这些空间先验引导通道自注意力机制，从而有效缓解语义差异并实现特征的深度融合。实验结果表明，SCSA 在图像分类、目标检测和语义分割等多个视觉任务中均取得了优于当前 SOTA 方法（如 CBAM、ECA）的性能表现。
     * **链接:** [[Paper]](https://arxiv.org/pdf/2505.04652v1) [[Code]](https://github.com/xiaofang007/CTO) (MedIA 2025)
 
+* <u>**PartialNet**</u>
+    * **简要说明：**  这篇论文介绍了一种名为 **PartialNet** 的新型高效神经网络架构，旨在解决现有网络在追求低计算量时忽略了部分通道特征利用的问题。其核心创新在于提出了**部分通道机制（PCM）**和**部分注意力卷积（PATConv）**，该机制将特征图通道进行拆分，并在不同部分并行执行卷积和低成本的视觉注意力操作，从而在降低参数量和 FLOPs 的同时增强了全局信息的交互能力。此外，作者还设计了**动态部分卷积（DPConv）**，允许模型根据计算约束自适应地学习最佳的通道拆分比例。实验结果表明，PartialNet 在 ImageNet 分类和 COCO 目标检测任务中，相比 FasterNet 等主流 SOTA 模型实现了更优的精度与推理速度平衡。
+    * **链接:** [[Paper]](https://arxiv.org/abs/2502.01303) [[Code]](https://github.com/haiduo/PartialNet) (AAAI 2026)
+
+
+* <u>**CTONet**</u>
+    * **简要说明：**  这篇论文介绍了一种名为 **PartialNet** 的新型高效神经网络架构，旨在解决现有网络在追求低计算量时忽略了部分通道特征利用的问题。其核心创新在于提出了**部分通道机制（PCM）**和**部分注意力卷积（PATConv）**，该机制将特征图通道进行拆分，并在不同部分并行执行卷积和低成本的视觉注意力操作，从而在降低参数量和 FLOPs 的同时增强了全局信息的交互能力。此外，作者还设计了**动态部分卷积（DPConv）**，允许模型根据计算约束自适应地学习最佳的通道拆分比例。实验结果表明，PartialNet 在 ImageNet 分类和 COCO 目标检测任务中，相比 FasterNet 等主流 SOTA 模型实现了更优的精度与推理速度平衡。
+    * **链接:** [[Paper]](https://arxiv.org/pdf/2505.04652v1) [[Code]](https://github.com/xiaofang007/CTO) (MeDIA 2025)
 
 ---
 
